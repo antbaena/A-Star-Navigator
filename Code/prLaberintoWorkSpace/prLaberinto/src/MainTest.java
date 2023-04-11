@@ -3,7 +3,7 @@ import matrixLaberinto.*;
 public class MainTest {
 
 	public static void main(String[] args) {
-		Laberinto lab = new Laberinto();
+		Board lab = new Board();
 		lab.GenerarObstaculos();
 		lab.print();
 		lab.getCasillaFinal();
