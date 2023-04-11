@@ -2,22 +2,38 @@ package matrixLaberinto;
 
 import java.util.Random;
 
+import nodo.Nodo;
+
 public class Board {
 	int FILAS = 60;
 	int COLUMNAS = 80;
 	double PorcentajeObs = 0.3;
 	int NumObs;
-	int matrix[][];
+	Nodo matrix[][];
+	
+	
+	//Nodos
+	Nodo init, goal;
+	
 
 	/**
 	 * @param matrix
 	 */
 	public Board() {
-		matrix = new int[FILAS][COLUMNAS];
+		inicializarMatriz();
 		NumObs = (int) (FILAS * COLUMNAS * (PorcentajeObs));
 		GenerarObstaculos();
 		GenerarFinal();
 		GenerarInicio();
+	}
+	
+	private void inicializarMatriz() {
+		matrix = new Nodo[FILAS][COLUMNAS];
+		for (int i = 0; i < FILAS; i++) {
+			for (int j = 0; j < COLUMNAS; j++) {
+				matrix[i][j]=new Nodo(i, j);
+			}
+		}
 	}
 
 	public void GenerarObstaculos() {
@@ -29,8 +45,8 @@ public class Board {
 			while (!find && i < FILAS) {
 				int j = 0;
 				while (!find && j < COLUMNAS) {
-					if (cont == 0 && matrix[i][j] != 1) {
-						matrix[i][j] = 1;
+					if (cont == 0 && matrix[i][j].getEstado() != '*') {
+						matrix[i][j].setEstado('*');
 						NumObs--;
 						find = !find;
 					} else {
@@ -48,8 +64,9 @@ public class Board {
 		int y = rd.nextInt(COLUMNAS);
 		int x = rd.nextInt(FILAS);
 
-		if (matrix[x][y] != 1) {
-			matrix[x][y] = 3;
+		if ( matrix[x][y].getEstado() !='*') {
+			goal = matrix[x][y];
+			matrix[x][y].setEstado('G');
 		} else {
 			throw new RuntimeException("ERROR la casilla final coincide con un obstaculo");
 		}
@@ -60,8 +77,9 @@ public class Board {
 		int y = rd.nextInt(COLUMNAS);
 		int x = rd.nextInt(FILAS);
 
-		if (matrix[x][y] != 1 && matrix[x][y] != 3) {
-			matrix[x][y] = 4;
+		if ( matrix[x][y].getEstado()!='*' &&  matrix[x][y].getEstado()!='G') {
+			init = matrix[x][y];
+			matrix[x][y].setEstado('I');
 		} else {
 			throw new RuntimeException("ERROR la casilla inicial coincide con un obstaculo o casilla final");
 		}
@@ -71,7 +89,7 @@ public class Board {
 		int cont = 0;
 		for (int i = 0; i < FILAS; i++) {
 			for (int j = 0; j < COLUMNAS; j++) {
-				if (matrix[i][j] == 1) {
+				if (matrix[i][j].getEstado()=='*') {
 					cont++;
 				}
 
@@ -83,30 +101,19 @@ public class Board {
 	}
 
 	public void getCasillaInicial() {
-		for (int i = 0; i < FILAS; i++) {
-			for (int j = 0; j < COLUMNAS; j++) {
-				if (matrix[i][j] == 3) {
-					System.out.println("(" + i + "," + j + ")");
-				}
-			}
-		}
+		System.out.println(init.getCol() +" "	+	init.getFil());
+		
 
 	}
 
 	public void getCasillaFinal() {
-		for (int i = 0; i < FILAS; i++) {
-			for (int j = 0; j < COLUMNAS; j++) {
-				if (matrix[i][j] == 4) {
-					System.out.println("(" + i + "," + j + ")");
-				}
-			}
-		}
+		System.out.println(goal.getCol() +" "	+	goal.getFil());
 	}
 
 	public void print() {
 		for (int i = 0; i < FILAS; i++) {
 			for (int j = 0; j < COLUMNAS; j++) {
-				System.out.print(matrix[i][j] + " ");
+				System.out.print(matrix[i][j].toString() + " ");
 			}
 			System.out.println();
 		}
