@@ -1,4 +1,5 @@
-package algoritmo;
+package Nodo;
+
 
 import java.util.ArrayList;
 
