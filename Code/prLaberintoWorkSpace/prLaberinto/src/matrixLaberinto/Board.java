@@ -20,11 +20,20 @@ public class Board {
 	 * @param matrix
 	 */
 	public Board() {
-		matrix = new Nodo[FILAS][COLUMNAS];
+		inicializarMatriz();
 		NumObs = (int) (FILAS * COLUMNAS * (PorcentajeObs));
 		GenerarObstaculos();
 		GenerarFinal();
 		GenerarInicio();
+	}
+	
+	private void inicializarMatriz() {
+		matrix = new Nodo[FILAS][COLUMNAS];
+		for (int i = 0; i < FILAS; i++) {
+			for (int j = 0; j < COLUMNAS; j++) {
+				matrix[i][j]=new Nodo(i, j);
+			}
+		}
 	}
 
 	public void GenerarObstaculos() {
@@ -104,7 +113,7 @@ public class Board {
 	public void print() {
 		for (int i = 0; i < FILAS; i++) {
 			for (int j = 0; j < COLUMNAS; j++) {
-				System.out.print(matrix[i][j] + " ");
+				System.out.print(matrix[i][j].toString() + " ");
 			}
 			System.out.println();
 		}
