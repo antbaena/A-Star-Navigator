@@ -36,7 +36,7 @@ public class Board {
 			while (!find && i < FILAS) {
 				int j = 0;
 				while (!find && j < COLUMNAS) {
-					if (cont == 0 && matrix[i][j].getEstado()=='*') {
+					if (cont == 0 && matrix[i][j].getEstado() != '*') {
 						matrix[i][j].setEstado('*');
 						NumObs--;
 						find = !find;
