@@ -1,4 +1,4 @@
-package Nodo;
+package nodo;
 
 
 import java.util.ArrayList;
