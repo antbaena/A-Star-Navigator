@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author anton
- *
- */
-module prLaberinto {
-}
