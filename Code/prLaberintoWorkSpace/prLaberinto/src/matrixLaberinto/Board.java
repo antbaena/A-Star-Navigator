@@ -2,7 +2,7 @@ package matrixLaberinto;
 
 import java.util.Random;
 
-public class Laberinto {
+public class Board {
 	int FILAS = 60;
 	int COLUMNAS = 80;
 	double PorcentajeObs = 0.3;
@@ -12,8 +12,7 @@ public class Laberinto {
 	/**
 	 * @param matrix
 	 */
-	public Laberinto() {
-
+	public Board() {
 		matrix = new int[FILAS][COLUMNAS];
 		NumObs = (int) (FILAS * COLUMNAS * (PorcentajeObs));
 		GenerarObstaculos();
@@ -105,7 +104,6 @@ public class Laberinto {
 	}
 
 	public void print() {
-
 		for (int i = 0; i < FILAS; i++) {
 			for (int j = 0; j < COLUMNAS; j++) {
 				System.out.print(matrix[i][j] + " ");
