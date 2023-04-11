@@ -55,7 +55,7 @@ public class Nodo {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(estado);
+		sb.append(h);
 		return sb.toString();
 	}
 }

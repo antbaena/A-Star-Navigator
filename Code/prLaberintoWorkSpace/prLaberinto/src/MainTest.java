@@ -5,7 +5,7 @@ public class MainTest {
 	public static void main(String[] args) {
 		Board lab = new Board();
 		lab.GenerarObstaculos();
-		lab.print();
+		PrintBoard.printBoard(lab);
 		
 		lab.getCasillaFinal();
 		lab.getCasillaInicial();

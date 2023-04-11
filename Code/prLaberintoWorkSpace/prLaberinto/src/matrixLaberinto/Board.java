@@ -25,6 +25,8 @@ public class Board {
 		GenerarObstaculos();
 		GenerarFinal();
 		GenerarInicio();
+		asignarHeuristica();
+		asignarvecinos();
 	}
 	
 	private void inicializarMatriz() {
@@ -110,14 +112,29 @@ public class Board {
 		System.out.println(goal.getCol() +" "	+	goal.getFil());
 	}
 
-	public void print() {
+//	public void print() {
+//		for (int i = 0; i < FILAS; i++) {
+//			for (int j = 0; j < COLUMNAS; j++) {
+//				System.out.print(matrix[i][j].toString() + " ");
+//			}
+//			System.out.println();
+//		}
+//
+//	}
+	
+	public void asignarHeuristica() {
 		for (int i = 0; i < FILAS; i++) {
 			for (int j = 0; j < COLUMNAS; j++) {
-				System.out.print(matrix[i][j].toString() + " ");
+				matrix[i][j].setHeuristica(goal.getCol(), goal.getFil());
 			}
-			System.out.println();
 		}
-
+	}
+	public void asignarvecinos() {
+		for (int i = 0; i < FILAS; i++) {
+			for (int j = 0; j < COLUMNAS; j++) {
+				matrix[i][j].setHeuristica(goal.getCol(), goal.getFil());
+			}
+		}
 	}
 
 }
