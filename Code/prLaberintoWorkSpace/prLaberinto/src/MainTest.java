@@ -6,6 +6,7 @@ public class MainTest {
 		Board lab = new Board();
 		lab.GenerarObstaculos();
 		lab.print();
+		
 		lab.getCasillaFinal();
 		lab.getCasillaInicial();
 	}
