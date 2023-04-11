@@ -47,6 +47,10 @@ public class Nodo {
 		this.estado = estado;
 	}
 	
+	public void asignarVecinos(Nodo n) {
+		vecinos.add(n);
+	}
+	
 	
 	private int DistanciaManhattan(int f, int c, int fo, int co) {
 		return Math.abs(f-fo) + Math.abs(c-co);
