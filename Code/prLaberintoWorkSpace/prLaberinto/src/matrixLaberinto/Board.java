@@ -130,7 +130,22 @@ public class Board {
 		}
 	}
 	public void asignarvecinos() {
-		
+		for (int i = 1; i < FILAS-1; i++) {
+			for (int j = 1; j < COLUMNAS-1; j++) {
+				matrix[i][j].asignarVecinos(matrix[i+1][j]);
+				matrix[i][j].asignarVecinos(matrix[i][j+1]);
+				matrix[i][j].asignarVecinos(matrix[i-1][j]);
+				matrix[i][j].asignarVecinos(matrix[i][j-1]);
+			}
+		}
+		matrix[0][0].asignarVecinos(matrix[1][0]);
+		matrix[0][0].asignarVecinos(matrix[0][1]);
+		matrix[FILAS-1][COLUMNAS-1].asignarVecinos(matrix[FILAS][COLUMNAS-2]);
+		matrix[FILAS-1][COLUMNAS-1].asignarVecinos(matrix[FILAS-2][COLUMNAS]);
+		matrix[0][COLUMNAS-1].asignarVecinos(matrix[1][COLUMNAS-1]);
+		matrix[0][COLUMNAS-1].asignarVecinos(matrix[0][COLUMNAS-2]);
+		matrix[FILAS-1][0].asignarVecinos(matrix[FILAS-2][0]);
+		matrix[FILAS-1][0].asignarVecinos(matrix[FILAS-1][1]);
 	}
 
 }
