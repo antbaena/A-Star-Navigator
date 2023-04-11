@@ -52,5 +52,10 @@ public class Nodo {
 		return Math.abs(f-fo) + Math.abs(c-co);
 	}
 	
-	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(estado);
+		return sb.toString();
+	}
 }
