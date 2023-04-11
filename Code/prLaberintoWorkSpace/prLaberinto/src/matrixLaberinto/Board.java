@@ -130,11 +130,7 @@ public class Board {
 		}
 	}
 	public void asignarvecinos() {
-		for (int i = 0; i < FILAS; i++) {
-			for (int j = 0; j < COLUMNAS; j++) {
-				matrix[i][j].setHeuristica(goal.getCol(), goal.getFil());
-			}
-		}
+		
 	}
 
 }
