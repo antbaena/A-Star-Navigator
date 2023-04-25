@@ -13,7 +13,7 @@ public class MainTest {
 		PrintBoard.printBoard(lab);
 		PrintBoard.printBoardHeruistica(lab);
 		Camino caminoFin = new AStarAlgorithm().buscarCamino(lab.getCasillaInicial());
-		
+		PrintBoard.printBoard(lab);
 	}
 
 }
