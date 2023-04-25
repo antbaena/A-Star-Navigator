@@ -111,16 +111,6 @@ public class Board {
 	public void getCasillaFinal() {
 		System.out.println(goal.getCol() +" "	+	goal.getFil());
 	}
-
-//	public void print() {
-//		for (int i = 0; i < FILAS; i++) {
-//			for (int j = 0; j < COLUMNAS; j++) {
-//				System.out.print(matrix[i][j].toString() + " ");
-//			}
-//			System.out.println();
-//		}
-//
-//	}
 	
 	public void asignarHeuristica() {
 		for (int i = 0; i < FILAS; i++) {
