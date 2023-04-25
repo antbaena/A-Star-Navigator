@@ -18,6 +18,8 @@ public class AStarAlgorithm {
 	private ArrayList<Nodo> caminoFinal;
 	
 	public Camino buscarCamino(Nodo init) {
+		init.setG(0);
+		init.setF(init.getHeuristica());
 		nodosAEvaluar.add(init);
 		while(!nodosAEvaluar.isEmpty()) {
 			// current node (minus cost)
