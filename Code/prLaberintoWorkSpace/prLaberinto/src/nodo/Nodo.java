@@ -9,7 +9,7 @@ public class Nodo {
 	private int col;
 	private Nodo bestprev;
 	private int g, f, h;
-	ArrayList<Nodo> vecinos;
+	public ArrayList<Nodo> vecinos;
 	private boolean gotpath;
 	
 	
