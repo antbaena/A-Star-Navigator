@@ -3,7 +3,7 @@ package nodo;
 
 import java.util.ArrayList;
 
-public class Nodo {
+public class Nodo implements Comparable<Nodo>{
 	private char estado;
 	private int fil;
 	private int col;
@@ -51,6 +51,14 @@ public class Nodo {
 		vecinos.add(n);
 	}
 	
+	public int getF() {
+		return f;
+	}
+	
+	public void setF(int f) {
+		this.f = f;
+	}
+	
 	
 	private int DistanciaManhattan(int f, int c, int fo, int co) {
 		return Math.abs(f-fo) + Math.abs(c-co);
@@ -61,5 +69,17 @@ public class Nodo {
 		StringBuilder sb = new StringBuilder();
 		sb.append(h);
 		return sb.toString();
+	}
+
+
+	@Override
+	public int compareTo(Nodo o) {
+		if(this.f > o.getF()) {
+			return 1;
+		} else if(this.f < o.getF()) {
+			return -1;
+		} else {
+			return 0;
+		}
 	}
 }

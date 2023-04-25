@@ -1,4 +1,9 @@
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeSet;
+
 import matrixLaberinto.*;
+import nodo.Nodo;
 
 public class MainTest {
 
@@ -6,7 +11,6 @@ public class MainTest {
 		Board lab = new Board();
 		PrintBoard.printBoard(lab);
 		PrintBoard.printBoardHeruistica(lab);
-	
 	}
 
 }
