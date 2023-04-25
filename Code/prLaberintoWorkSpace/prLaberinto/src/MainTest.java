@@ -3,6 +3,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import matrixLaberinto.*;
+import nodo.Camino;
 import nodo.Nodo;
 
 public class MainTest {
@@ -11,6 +12,8 @@ public class MainTest {
 		Board lab = new Board();
 		PrintBoard.printBoard(lab);
 		PrintBoard.printBoardHeruistica(lab);
+		Camino caminoFin = new AStarAlgorithm().buscarCamino(lab.getCasillaInicial());
+		
 	}
 
 }

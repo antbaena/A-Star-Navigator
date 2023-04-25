@@ -7,7 +7,7 @@ import nodo.Nodo;
 public class Board {
 	int FILAS = 60;
 	int COLUMNAS = 80;
-	double PorcentajeObs = 0.3;
+	double PorcentajeObs = 0.1;
 	int NumObs;
 	Nodo matrix[][];
 	
@@ -102,14 +102,14 @@ public class Board {
 		return cont;
 	}
 
-	public void getCasillaInicial() {
-		System.out.println(init.getCol() +" "	+	init.getFil());
+	public Nodo getCasillaInicial() {
+		return init;
 		
 
 	}
 
-	public void getCasillaFinal() {
-		System.out.println(goal.getCol() +" "	+	goal.getFil());
+	public Nodo getCasillaFinal() {
+		return goal;
 	}
 	
 	public void asignarHeuristica() {
