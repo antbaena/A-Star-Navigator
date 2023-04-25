@@ -26,7 +26,7 @@ public class AStarAlgorithm {
 			// node change -> public ArrayList vecinos;
 			for(Nodo vecino : actual.vecinos) {
 				if(nodosEvaluados.contains(vecino)) continue;
-				//gTentativo = actual.getG() + Nodo.DistanciaManhattan(ve);
+				gTentativo = actual.getG() + 1;
 			}
 			
 			
