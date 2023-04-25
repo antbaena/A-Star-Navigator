@@ -39,6 +39,10 @@ public class Nodo implements Comparable<Nodo>{
 		return g;
 	}
 	
+	public void setG(int g) {
+		this.g = g;
+	}
+	
 	public int getHeuristica() {
 		return h;
 	}

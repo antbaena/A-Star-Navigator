@@ -17,16 +17,23 @@ public class AStarAlgorithm {
 	
 	public void buscarCamino() {
 		while(!nodosAEvaluar.isEmpty()) {
+			// current node (minus cost)
 			actual = nodosAEvaluar.iterator().next();
-			//current
 			if(actual.getEstado()=='G')
 				break; 
 			nodosAEvaluar.remove(actual);
 			nodosEvaluados.add(actual);
-			// node change -> public ArrayList vecinos;
 			for(Nodo vecino : actual.vecinos) {
-				if(nodosEvaluados.contains(vecino)) continue;
-				gTentativo = actual.getG() + 1;
+				boolean contains = nodosEvaluados.contains(vecino);
+				if(contains) continue;
+				gTentativo = actual.getG() + 1; // the distancia between a node and its neighbour is always 1
+				if(!contains || gTentativo < vecino.getG()) {
+					nodosVisitados.put(vecino, actual);
+					vecino.setG(gTentativo);
+					vecino.setF(vecino.getG() + vecino.getHeuristica());
+					if(contains)
+						nodosAEvaluar.add(vecino);
+				}
 			}
 			
 			
