@@ -15,15 +15,15 @@ public class AStarAlgorithm {
 	private int gTentativo = 0;
 	private Nodo actual;
 	
-	public Nodo menorNodo(HashSet<Nodo> nodosAEvaluar){        // función que devulve el nodo del openset con menor valor de f
+	public Nodo menorNodo(HashSet<Nodo> nodosAEvaluar){        
         int t;
         Iterator<Nodo> it = nodosAEvaluar.iterator();
         if(it.hasNext()) {
             Nodo menor = it.next();
             while (it.hasNext()) {
-                Nodo sig = it.next();   // Siguiente
-                t = sig.getF();             // Calcular f de siguiente
-                    if (t <= menor.getF()) {  //
+                Nodo sig = it.next();   
+                t = sig.getF();             
+                    if (t <= menor.getF()) { 
                     menor = sig;
                 }
             }

@@ -200,8 +200,8 @@ public class Board {
 //		return true;
 //	}
 	
-	public void neighbours(Nodo n){         // procedimiento que calcula los vecinos de un nodo n pasado
-        if(n.getFil()-1>=0){                              // como argumento y los devuelve en el conjunto res
+	public void neighbours(Nodo n){        
+        if(n.getFil()-1>=0){                             
             n.asignarVecinos(matrix[n.getFil() - 1][n.getCol()]);
         }
         if(n.getCol()-1>=0){
