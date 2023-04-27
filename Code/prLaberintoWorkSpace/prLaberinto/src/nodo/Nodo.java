@@ -57,7 +57,7 @@ public class Nodo{
 	}
 	
 	public void setHeuristica(int c, int f) {
-		h = DistanciaManhattan(fil, col, f, c);	
+		h = DistanciaManhattan(f,c,fil, col);	
 	}
 
 	public void setEstado(char estado) {
