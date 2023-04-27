@@ -10,9 +10,10 @@ public class MainTest {
 
 	public static void main(String[] args) {
 		Board lab = new Board();
-		PrintBoard.printBoard(lab);
-		PrintBoard.printBoardHeruistica(lab);
+		//PrintBoard.printBoard(lab);
+		//PrintBoard.printBoardHeruistica(lab);
 		Camino caminoFin = new AStarAlgorithm().buscarCamino(lab.getCasillaInicial());
+		PrintBoard.printBoardFile(lab,"output.txt");
 		PrintBoard.printBoard(lab);
 	}
 
