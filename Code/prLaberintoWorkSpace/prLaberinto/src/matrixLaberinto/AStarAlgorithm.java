@@ -10,57 +10,87 @@ import nodo.Nodo;
  * */
 public class AStarAlgorithm {
 	
-	private Set<Nodo> nodosEvaluados = new HashSet<>(); 
-	private Set<Nodo> nodosAEvaluar = new TreeSet<>();
-	private Map<Nodo, Nodo> nodosVisitados = new HashMap<>();
+	private HashSet<Nodo> nodosEvaluados = new HashSet<>(); 
+	private HashSet<Nodo> nodosAEvaluar = new HashSet<>();
 	private int gTentativo = 0;
 	private Nodo actual;
-	private ArrayList<Nodo> caminoFinal;
+	
+	public Nodo menorNodo(HashSet<Nodo> nodosAEvaluar){        // función que devulve el nodo del openset con menor valor de f
+        int t;
+        Iterator<Nodo> it = nodosAEvaluar.iterator();
+        if(it.hasNext()) {
+            Nodo menor = it.next();
+            while (it.hasNext()) {
+                Nodo sig = it.next();   // Siguiente
+                t = sig.getF();             // Calcular f de siguiente
+                    if (t <= menor.getF()) {  //
+                    menor = sig;
+                }
+            }
+            return menor;
+        }
+        else{
+            throw new RuntimeException();
+        }
+
+}
 	
 	public Camino buscarCamino(Nodo init) {
 		init.setG(0);
 		init.setF(init.getHeuristica());
+		init.setBestprev(init);
 		nodosAEvaluar.add(init);
 		while(!nodosAEvaluar.isEmpty()) {
 			// current node (minus cost)
-			actual = nodosAEvaluar.iterator().next();
+			actual = menorNodo(nodosAEvaluar);
 			
 			if(actual.getEstado()=='G')
-				return reconstruirCamino(actual); 
+				return reconstruct_path(actual.getBestprev() , actual); 
 			
-			nodosAEvaluar.remove(actual);
+			nodosAEvaluar.remove(actual);	
 			nodosEvaluados.add(actual);
 			
 			for(Nodo vecino : actual.vecinos) {
 			
-				boolean containsNotEv = nodosAEvaluar.contains(vecino);
-				if(nodosEvaluados.contains(vecino) || vecino.getEstado() == '*') continue;
-				gTentativo = actual.getG() + 1; // the distancia between a node and its neighbour is always 1
-				if(!containsNotEv || gTentativo < vecino.getG()) {
-					nodosVisitados.put(vecino, actual);
-					vecino.setG(gTentativo);
-					vecino.setF(vecino.getG() + vecino.getHeuristica());
-					if(!containsNotEv)
-						nodosAEvaluar.add(vecino);
+				if(nodosEvaluados.contains(vecino)) continue;
+				if(vecino.getEstado() != '*') {
+					gTentativo = actual.getG() + 1; // the distancia between a node and its neighbour is always 1
+					if(!nodosAEvaluar.contains(vecino) || gTentativo < vecino.getG()) {
+						vecino.setBestprev(actual);
+						vecino.setG(gTentativo);
+						vecino.setF(vecino.getG() + vecino.getHeuristica());
+						if(!nodosAEvaluar.contains(vecino)) {
+							nodosAEvaluar.add(vecino);
+						}
+					
+					}
 				}
+				
 			}
-			
-			
+				
 		}
 		return null;
 	}
 	
-	public Camino reconstruirCamino(Nodo fin) {
-		Nodo node = fin;
-		Camino camino = new Camino();
-		while(node != null) {
-			if(node.getEstado() == ' ')
-				node.setEstado('+');
-			camino.prependWayPoint(node);
-			node = nodosVisitados.getOrDefault(node,null);
+	public Camino reconstruct_path(Nodo padre,Nodo current) {  // función que reconstruye el camino óptimo calulado accediendo al nodo padre de forma iterativa
+        Nodo aux = current;
+        while(padre.getEstado() !='I'){
+            if(aux.getEstado() != 'G'){
+                aux.setEstado( '+'); 
+            }
+            aux = padre;
+            padre = aux.getBestprev();
+        }
+        if(aux.getEstado() != 'G'){
+            aux.setEstado('+');
+        }
+        return null;
+    }
+	
+	public void pintarCamino(Camino camino) {
+		for(int i = 1; i<camino.getLength() - 1; i++) {
+			camino.getCoordenadasCamino(i).setEstado('+');
 		}
-		
-		return camino;
 	}
 	
 	

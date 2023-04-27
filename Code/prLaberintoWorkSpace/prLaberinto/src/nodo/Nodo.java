@@ -2,8 +2,9 @@ package nodo;
 
 
 import java.util.ArrayList;
+import java.util.Objects;
 
-public class Nodo implements Comparable<Nodo>{
+public class Nodo{
 	private char estado;
 	private int fil;
 	private int col;
@@ -47,6 +48,14 @@ public class Nodo implements Comparable<Nodo>{
 		return h;
 	}
 	
+	public void setBestprev(Nodo nodo) {
+		bestprev = nodo;
+	}
+	
+	public Nodo getBestprev() {
+		return bestprev;
+	}
+	
 	public void setHeuristica(int c, int f) {
 		h = DistanciaManhattan(fil, col, f, c);	
 	}
@@ -79,15 +88,15 @@ public class Nodo implements Comparable<Nodo>{
 		return sb.toString();
 	}
 
-
+	
+	
 	@Override
-	public int compareTo(Nodo o) {
-		if(this.f > o.getF()) {
-			return 1;
-		} else if(this.f < o.getF()) {
-			return -1;
-		} else {
-			return 0;
-		}
-	}
+    public boolean equals(Object obj){
+        return (obj instanceof Nodo a) && a.fil==f && a.col == col;
+    }
+
+    @Override
+    public int hashCode(){
+        return Integer.hashCode(fil)+Integer.hashCode(col);
+    }
 }
