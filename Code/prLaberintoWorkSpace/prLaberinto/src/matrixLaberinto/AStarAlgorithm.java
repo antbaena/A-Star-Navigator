@@ -84,7 +84,7 @@ public class AStarAlgorithm {
         if(aux.getEstado() != 'G'){
             aux.setEstado('+');
         }
-        return null;
+        return new Camino();
     }
 	
 	public void pintarCamino(Camino camino) {

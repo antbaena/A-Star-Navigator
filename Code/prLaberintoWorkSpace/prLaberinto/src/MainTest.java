@@ -11,10 +11,16 @@ public class MainTest {
 	public static void main(String[] args) {
 		Board lab = new Board();
 		//PrintBoard.printBoard(lab);
-		PrintBoard.printBoardHeruistica(lab);
+		//PrintBoard.printBoardHeruistica(lab);
 		Camino caminoFin = new AStarAlgorithm().buscarCamino(lab.getCasillaInicial());
-		PrintBoard.printBoardFile(lab,"output.txt");
-		PrintBoard.printBoard(lab);
+		if(caminoFin == null) {
+			System.err.println("Camino no Disponible");
+			PrintBoard.printBoard(lab);
+			System.err.println("Camino no Disponible");
+		} else {
+			PrintBoard.printBoardFile(lab,"output.txt");
+			PrintBoard.printBoard(lab);
+		}
 	}
 
 }
