@@ -7,7 +7,7 @@ import nodo.Nodo;
 public class Board {
 	int FILAS = 60;
 	int COLUMNAS = 80;
-	double PorcentajeObs = 0;
+	double PorcentajeObs = 0.5;
 	int NumObs;
 	Nodo matrix[][];
 	
@@ -65,6 +65,7 @@ public class Board {
 		Random rd = new Random();
 		int y = rd.nextInt(COLUMNAS);
 		int x = rd.nextInt(FILAS);
+		
 
 		if ( matrix[x][y].getEstado() !='*') {
 			goal = matrix[x][y];
@@ -78,7 +79,7 @@ public class Board {
 		Random rd = new Random();
 		int y = rd.nextInt(COLUMNAS);
 		int x = rd.nextInt(FILAS);
-
+	
 		if ( matrix[x][y].getEstado()!='*' &&  matrix[x][y].getEstado()!='G') {
 			init = matrix[x][y];
 			matrix[x][y].setEstado('I');
@@ -216,9 +217,15 @@ public class Board {
     }
 	
 	public void asignarvecinos() {
-		for (int i = 1; i < FILAS-1; i++) {
-			for (int j = 1; j < COLUMNAS-1; j++) {
+		for (int i = 0; i < FILAS; i++) {
+			for (int j = 0; j < COLUMNAS; j++) {
 				neighbours(matrix[i][j]);
+//				if(neighbours(matrix[i][j])) {
+//					matrix[i][j].asignarVecinos(matrix[i-1][j]);
+//					matrix[i][j].asignarVecinos(matrix[i+1][j]);
+//					matrix[i][j].asignarVecinos(matrix[i][j-1]);
+//					matrix[i][j].asignarVecinos(matrix[i][j+1]);
+//				}
 			}
 		}
 		
