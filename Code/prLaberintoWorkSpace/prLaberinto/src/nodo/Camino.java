@@ -45,5 +45,10 @@ public class Camino {
                 }
                 return false;
         }
+        
+        @Override
+        public String toString() {
+        	return coordenadasCamino.toString();
+        }
 
 }

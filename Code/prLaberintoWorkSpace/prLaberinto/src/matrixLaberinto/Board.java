@@ -19,8 +19,9 @@ public class Board {
 	/**
 	 * @param matrix
 	 */
-	public Board() {
+	public Board(float numObs) {
 		inicializarMatriz();
+		PorcentajeObs = numObs;
 		NumObs = (int) (FILAS * COLUMNAS * (PorcentajeObs));
 		GenerarObstaculos();
 		GenerarFinal();
@@ -71,7 +72,7 @@ public class Board {
 			goal = matrix[x][y];
 			matrix[x][y].setEstado('G');
 		} else {
-			throw new RuntimeException("ERROR la casilla final coincide con un obstaculo");
+			GenerarFinal();
 		}
 	}
 
@@ -84,7 +85,7 @@ public class Board {
 			init = matrix[x][y];
 			matrix[x][y].setEstado('I');
 		} else {
-			throw new RuntimeException("ERROR la casilla inicial coincide con un obstaculo o casilla final");
+			GenerarInicio();
 		}
 	}
 
