@@ -9,11 +9,11 @@ import nodo.Nodo;
 public class MainTest {
 
 	public static void main(String[] args) {
-		Board lab = new Board();
+		Board lab = new Board(0.5f);
 		//PrintBoard.printBoard(lab);
 		//PrintBoard.printBoardHeruistica(lab);
-		boolean caminoFin = new AStarAlgorithm().buscarCamino(lab.getCasillaInicial());
-		if(caminoFin == false) {
+		int caminoFin = new AStarAlgorithm().buscarCamino(lab.getCasillaInicial());
+		if(caminoFin == 0) {
 			System.err.println("Camino no Disponible");
 			PrintBoard.printBoard(lab);
 			System.err.println("Camino no Disponible");
