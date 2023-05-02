@@ -78,6 +78,7 @@ public class AStarAlgorithm {
         while(padre.getEstado() !='I'){
             if(aux.getEstado() != 'G'){
                 aux.setEstado( '+'); 
+                nPasos++;
             }
             aux = padre;
             padre = aux.getBestprev();
