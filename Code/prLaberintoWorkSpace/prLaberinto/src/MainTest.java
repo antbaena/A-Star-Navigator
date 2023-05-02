@@ -12,8 +12,8 @@ public class MainTest {
 		Board lab = new Board();
 		//PrintBoard.printBoard(lab);
 		//PrintBoard.printBoardHeruistica(lab);
-		Camino caminoFin = new AStarAlgorithm().buscarCamino(lab.getCasillaInicial());
-		if(caminoFin == null) {
+		boolean caminoFin = new AStarAlgorithm().buscarCamino(lab.getCasillaInicial());
+		if(caminoFin == false) {
 			System.err.println("Camino no Disponible");
 			PrintBoard.printBoard(lab);
 			System.err.println("Camino no Disponible");

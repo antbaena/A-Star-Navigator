@@ -7,7 +7,7 @@ import nodo.Nodo;
 public class Board {
 	int FILAS = 60;
 	int COLUMNAS = 80;
-	double PorcentajeObs = 0.4;
+	double PorcentajeObs = 0.1;
 	int NumObs;
 	Nodo matrix[][];
 	
@@ -121,87 +121,7 @@ public class Board {
 			}
 		}
 	}
-//	public void asignarvecinos() {
-//		for (int i = 1; i < FILAS-1; i++) {
-//			for (int j = 1; j < COLUMNAS-1; j++) {
-//				matrix[i][j].asignarVecinos(matrix[i+1][j]);
-//				matrix[i][j].asignarVecinos(matrix[i][j+1]);
-//				matrix[i][j].asignarVecinos(matrix[i-1][j]);
-//				matrix[i][j].asignarVecinos(matrix[i][j-1]);
-//			}
-//		}
-//		matrix[0][0].asignarVecinos(matrix[1][0]);
-//		matrix[0][0].asignarVecinos(matrix[0][1]);
-//		matrix[FILAS-1][COLUMNAS-1].asignarVecinos(matrix[FILAS][COLUMNAS-2]);
-//		matrix[FILAS-1][COLUMNAS-1].asignarVecinos(matrix[FILAS-2][COLUMNAS]);
-//		matrix[0][COLUMNAS-1].asignarVecinos(matrix[1][COLUMNAS-1]);
-//		matrix[0][COLUMNAS-1].asignarVecinos(matrix[0][COLUMNAS-2]);
-//		matrix[FILAS-1][0].asignarVecinos(matrix[FILAS-2][0]);
-//		matrix[FILAS-1][0].asignarVecinos(matrix[FILAS-1][1]);
-//		for(int i = 1; i < FILAS-1; i++) {
-//			matrix[i][0].asignarVecinos(matrix[i+1][0]);
-//			matrix[i][0].asignarVecinos(matrix[i][1]);
-//			matrix[i][0].asignarVecinos(matrix[i-1][0]);
-//			
-//			matrix[i][COLUMNAS-1].asignarVecinos(matrix[i+1][COLUMNAS-1]);
-//			matrix[i][COLUMNAS-1].asignarVecinos(matrix[i][COLUMNAS-2]);
-//			matrix[i][COLUMNAS-1].asignarVecinos(matrix[i-1][COLUMNAS-1]);
-//		}
-//		for(int j = 1; j < COLUMNAS-1; j++) {
-//			matrix[0][j].asignarVecinos(matrix[0][j+1]);
-//			matrix[0][j].asignarVecinos(matrix[1][j]);
-//			matrix[0][j].asignarVecinos(matrix[0][j-1]);
-//			
-//			matrix[0][FILAS-1].asignarVecinos(matrix[FILAS-1][j+1]);
-//			matrix[0][FILAS-1].asignarVecinos(matrix[FILAS-2][j]);
-//			matrix[0][FILAS-1].asignarVecinos(matrix[FILAS-1][j-1]);
-//		}
-//	}
-	
-//	private boolean neighbours(Nodo node) {
-//		int x = node.getCol(), y = node.getFil();
-//		
-//		if(x == 0 && y == 0) {
-//			matrix[0][0].asignarVecinos(matrix[1][0]);
-//			matrix[0][0].asignarVecinos(matrix[0][1]);
-//			return false;
-//		} else if(x == FILAS-1 && y == COLUMNAS - 1) {
-//			matrix[FILAS-1][COLUMNAS-1].asignarVecinos(matrix[FILAS][COLUMNAS-2]);
-//			matrix[FILAS-1][COLUMNAS-1].asignarVecinos(matrix[FILAS-2][COLUMNAS]);
-//			return false;
-//		} else if(x == 0 && y == COLUMNAS-1) {
-//			matrix[0][COLUMNAS-1].asignarVecinos(matrix[1][COLUMNAS-1]);
-//			matrix[0][COLUMNAS-1].asignarVecinos(matrix[0][COLUMNAS-2]);
-//			return false;
-//		} else if(x == FILAS-1 && y == 0) {
-//			matrix[FILAS-1][0].asignarVecinos(matrix[FILAS-2][0]);
-//			matrix[FILAS-1][0].asignarVecinos(matrix[FILAS-1][1]);
-//			return false;
-//		} else if(x == 0) {
-//			matrix[0][y].asignarVecinos(matrix[0][y+1]);
-//			matrix[0][y].asignarVecinos(matrix[0][y-1]);
-//			matrix[0][y].asignarVecinos(matrix[1][y]);
-//			return false;
-//		} else if(y == 0) {
-//			matrix[x][0].asignarVecinos(matrix[x+1][0]);
-//			matrix[x][0].asignarVecinos(matrix[x-1][0]);
-//			matrix[x][0].asignarVecinos(matrix[x][1]);
-//			return false;
-//		} else if(x == FILAS-1) {
-//			matrix[FILAS-1][y].asignarVecinos(matrix[FILAS-2][y]);
-//			matrix[FILAS-1][y].asignarVecinos(matrix[FILAS-1][y-1]);
-//			matrix[FILAS-1][y].asignarVecinos(matrix[FILAS-1][y+1]);
-//			return false;
-//		} else if(y == COLUMNAS-1) {
-//			matrix[x][COLUMNAS-1].asignarVecinos(matrix[x+1][COLUMNAS-1]);
-//			matrix[x][COLUMNAS-1].asignarVecinos(matrix[x-1][COLUMNAS-1]);
-//			matrix[x][COLUMNAS-1].asignarVecinos(matrix[x][COLUMNAS-2]);
-//			return false;
-//		}
-//		
-//		return true;
-//	}
-	
+
 	public void neighbours(Nodo n){        
         if(n.getFil()-1>=0){                             
             n.asignarVecinos(matrix[n.getFil() - 1][n.getCol()]);
@@ -221,12 +141,6 @@ public class Board {
 		for (int i = 0; i < FILAS; i++) {
 			for (int j = 0; j < COLUMNAS; j++) {
 				neighbours(matrix[i][j]);
-//				if(neighbours(matrix[i][j])) {
-//					matrix[i][j].asignarVecinos(matrix[i-1][j]);
-//					matrix[i][j].asignarVecinos(matrix[i+1][j]);
-//					matrix[i][j].asignarVecinos(matrix[i][j-1]);
-//					matrix[i][j].asignarVecinos(matrix[i][j+1]);
-//				}
 			}
 		}
 		
