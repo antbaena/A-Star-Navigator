@@ -11,15 +11,13 @@ public class Nodo{
 	private Nodo bestprev;
 	private int g, f, h;
 	public ArrayList<Nodo> vecinos;
-	private boolean gotpath;
 	
 	
 	public Nodo(int fil, int col) {
 		this.col = col;
 		this.estado = ' ';
 		this.fil = fil;
-		g = f = h = -1;
-		gotpath = false;
+		g = f = h = -1;		//Inicializamos todas la variables de la función a -1
 		bestprev = null;
 		vecinos = new ArrayList<>();
 	}
@@ -58,6 +56,7 @@ public class Nodo{
 	
 	public void setHeuristica(int c, int f) {
 		h = DistanciaManhattan(f,c,fil, col);	
+		//Establecemos como nuestra función heurística la Distancia de Manhattan
 	}
 
 	public void setEstado(char estado) {
@@ -65,7 +64,7 @@ public class Nodo{
 	}
 	
 	public void asignarVecinos(Nodo n) {
-		vecinos.add(n);
+		vecinos.add(n);		//Añadimos los vecinos a su respectivo ArrayList
 	}
 	
 	public int getF() {
@@ -88,7 +87,7 @@ public class Nodo{
 		return sb.toString();
 	}
 
-	
+	//Métodos necesarios para la ordenación y búsquedas en los ArrayLists
 	
 	@Override
     public boolean equals(Object obj){
