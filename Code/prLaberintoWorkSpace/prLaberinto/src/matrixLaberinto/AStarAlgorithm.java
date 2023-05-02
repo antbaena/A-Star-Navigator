@@ -35,7 +35,7 @@ public class AStarAlgorithm {
 
 }
 	
-	public Camino buscarCamino(Nodo init) {
+	public boolean buscarCamino(Nodo init) {
 		init.setG(0);
 		init.setF(init.getHeuristica());
 		init.setBestprev(init);
@@ -69,10 +69,10 @@ public class AStarAlgorithm {
 			}
 				
 		}
-		return null;
+		return false;
 	}
 	
-	public Camino reconstruct_path(Nodo padre,Nodo current) {  // función que reconstruye el camino óptimo calulado accediendo al nodo padre de forma iterativa
+	public boolean reconstruct_path(Nodo padre,Nodo current) {  // función que reconstruye el camino óptimo calulado accediendo al nodo padre de forma iterativa
         Nodo aux = current;
         while(padre.getEstado() !='I'){
             if(aux.getEstado() != 'G'){
@@ -84,7 +84,7 @@ public class AStarAlgorithm {
         if(aux.getEstado() != 'G'){
             aux.setEstado('+');
         }
-        return new Camino();
+        return true;
     }
 	
 	public void pintarCamino(Camino camino) {
