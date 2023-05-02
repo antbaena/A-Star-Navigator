@@ -7,7 +7,7 @@ import nodo.Nodo;
 public class Board {
 	int FILAS = 60;
 	int COLUMNAS = 80;
-	double PorcentajeObs = 0.4;
+	double PorcentajeObs = 0.5;
 	int NumObs;
 	Nodo matrix[][];
 	
