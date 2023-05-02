@@ -9,7 +9,7 @@ import nodo.Nodo;
 public class MainTest {
 
 	public static void main(String[] args) {
-		Board lab = new Board();
+		Board lab = new Board(0);
 		//PrintBoard.printBoard(lab);
 		//PrintBoard.printBoardHeruistica(lab);
 		boolean caminoFin = new AStarAlgorithm().buscarCamino(lab.getCasillaInicial());
