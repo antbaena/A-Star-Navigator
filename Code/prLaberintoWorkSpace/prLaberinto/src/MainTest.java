@@ -9,6 +9,7 @@ import nodo.Nodo;
 public class MainTest {
 
 	public static void main(String[] args) {
+<<<<<<< Updated upstream
 		Board lab = new Board(0);
 		//PrintBoard.printBoard(lab);
 		//PrintBoard.printBoardHeruistica(lab);
@@ -20,6 +21,18 @@ public class MainTest {
 		} else {
 			PrintBoard.printBoardFile(lab,"output.txt");
 			PrintBoard.printBoard(lab);
+=======
+		System.out.println("Prueba con 0% de obstaculos");
+		for(int i = 0; i < 100; i++) {
+			Board lab = new Board(0);
+			boolean caminoFin = new AStarAlgorithm().buscarCamino(lab.getCasillaInicial());
+			if(caminoFin == false) {
+				System.err.println("Camino no Disponible");
+			} else {
+				PrintBoard.printBoardFile(lab,"output.txt");
+				PrintBoard.printBoard(lab);
+			}
+>>>>>>> Stashed changes
 		}
 	}
 
