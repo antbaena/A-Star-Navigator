@@ -6,16 +6,14 @@ import nodo.Nodo;
 
 public class Board {
 	int FILAS = 60;
-	int COLUMNAS = 80;	
+	int COLUMNAS = 80;
 	double PorcentajeObs = 0;
 
 	int NumObs;
 	Nodo matrix[][];
-	
-	
-	//Nodos
+
+	// Nodos
 	Nodo init, goal;
-	
 
 	/**
 	 * @param matrix
@@ -30,12 +28,12 @@ public class Board {
 		asignarHeuristica();
 		asignarvecinos();
 	}
-	
+
 	private void inicializarMatriz() {
 		matrix = new Nodo[FILAS][COLUMNAS];
 		for (int i = 0; i < FILAS; i++) {
 			for (int j = 0; j < COLUMNAS; j++) {
-				matrix[i][j]=new Nodo(i, j);
+				matrix[i][j] = new Nodo(i, j);
 			}
 		}
 	}
@@ -67,9 +65,8 @@ public class Board {
 		Random rd = new Random();
 		int y = rd.nextInt(COLUMNAS);
 		int x = rd.nextInt(FILAS);
-		
 
-		if ( matrix[x][y].getEstado() !='*') {
+		if (matrix[x][y].getEstado() != '*') {
 			goal = matrix[x][y];
 			matrix[x][y].setEstado('G');
 		} else {
@@ -81,8 +78,8 @@ public class Board {
 		Random rd = new Random();
 		int y = rd.nextInt(COLUMNAS);
 		int x = rd.nextInt(FILAS);
-	
-		if ( matrix[x][y].getEstado()!='*' &&  matrix[x][y].getEstado()!='G') {
+
+		if (matrix[x][y].getEstado() != '*' && matrix[x][y].getEstado() != 'G') {
 			init = matrix[x][y];
 			matrix[x][y].setEstado('I');
 		} else {
@@ -94,7 +91,7 @@ public class Board {
 		int cont = 0;
 		for (int i = 0; i < FILAS; i++) {
 			for (int j = 0; j < COLUMNAS; j++) {
-				if (matrix[i][j].getEstado()=='*') {
+				if (matrix[i][j].getEstado() == '*') {
 					cont++;
 				}
 
@@ -107,14 +104,13 @@ public class Board {
 
 	public Nodo getCasillaInicial() {
 		return init;
-		
 
 	}
 
 	public Nodo getCasillaFinal() {
 		return goal;
 	}
-	
+
 	public void asignarHeuristica() {
 		for (int i = 0; i < FILAS; i++) {
 			for (int j = 0; j < COLUMNAS; j++) {
@@ -122,29 +118,29 @@ public class Board {
 			}
 		}
 	}
-	
-	public void neighbours(Nodo n){        
-        if(n.getFil()-1>=0){                             
-            n.asignarVecinos(matrix[n.getFil() - 1][n.getCol()]);
-        }
-        if(n.getCol()-1>=0){
-        	 n.asignarVecinos(matrix[n.getFil()][n.getCol() - 1]);
-        }
-        if(n.getFil()+1<FILAS){
-        	 n.asignarVecinos(matrix[n.getFil() + 1][n.getCol()]);
-        }
-        if(n.getCol()+1<COLUMNAS){
-        	 n.asignarVecinos(matrix[n.getFil()][n.getCol() + 1]);
-        }
-    }
-	
+
+	public void neighbours(Nodo n) {
+		if (n.getFil() - 1 >= 0) {
+			n.asignarVecinos(matrix[n.getFil() - 1][n.getCol()]);
+		}
+		if (n.getCol() - 1 >= 0) {
+			n.asignarVecinos(matrix[n.getFil()][n.getCol() - 1]);
+		}
+		if (n.getFil() + 1 < FILAS) {
+			n.asignarVecinos(matrix[n.getFil() + 1][n.getCol()]);
+		}
+		if (n.getCol() + 1 < COLUMNAS) {
+			n.asignarVecinos(matrix[n.getFil()][n.getCol() + 1]);
+		}
+	}
+
 	public void asignarvecinos() {
 		for (int i = 0; i < FILAS; i++) {
 			for (int j = 0; j < COLUMNAS; j++) {
 				neighbours(matrix[i][j]);
 			}
 		}
-		
+
 	}
 
 }
