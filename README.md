@@ -29,8 +29,7 @@ El algoritmo A* sigue los siguientes pasos para encontrar el camino más corto e
 
 ## Ejecución del Proyecto
 Para ejecutar el proyecto, se debe seguir los siguientes pasos:
-1. Clonar este repositorio en su máquina local.
+1. Clonar este repositorio.
 2. Abrir el proyecto en su IDE preferido.
-3. Compilar y ejecutar el programa.
-4. Proporcionar como entrada el laberinto deseado en el formato adecuado.
+3. Compilar y ejecutar el mainTest para ver su funcionamiento.
 5. Observar la salida que muestra el camino más corto encontrado por el algoritmo A*.
