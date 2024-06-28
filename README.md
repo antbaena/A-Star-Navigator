@@ -1,3 +1,42 @@
+# MazeSolver Project
+
+## Description
+This project involves the development of the A* algorithm in Java to solve mazes. The A* algorithm is an informed search algorithm that finds the shortest path between a start node and a goal node. It is widely used in artificial intelligence applications, such as solving search problems in graphs, path planning, and more.
+
+## A* Algorithm
+The A* algorithm is based on a combination of uniform-cost search and heuristic search. It uses an evaluation function that combines the actual cost of the path from the start node to the current node with a heuristic estimate of the remaining cost to the goal node. The typical evaluation formula is: `f(n) = g(n) + h(n)`, where:
+- `f(n)` is the estimated total cost of the path from the start node to the goal node passing through the current node.
+- `g(n)` is the actual cost of the path from the start node to the current node.
+- `h(n)` is the heuristic estimate of the cost from the current node to the goal node.
+
+## Steps of the A* Algorithm
+The A* algorithm follows these steps to find the shortest path in a graph:
+
+1. **Initialization**: Initialize two lists, the open list and the closed list. The open list contains nodes to be explored, while the closed list contains nodes that have already been evaluated.
+2. **Add the start node to the open list**.
+3. **Iteration**:
+   - While the open list is not empty:
+     - Select the node with the lowest `f(n)` value from the open list. This will be the current node.
+     - If the current node is the goal node, the shortest path has been found and the algorithm terminates.
+     - Otherwise, expand the current node and generate its successor nodes.
+     - For each successor:
+       - If the successor is already in the closed list and the new path to it is not better, discard this successor.
+       - If the successor is not in the open list or the new path to it is better:
+         - Update the successor's `g(n)` and `h(n)` values.
+         - Set the successor's parent node to the current node.
+         - If the successor is not in the open list, add it.
+4. **Path Construction**: Once the goal node is reached, reconstruct the path from the goal node to the start node by following the parent nodes.
+
+## Running the Project
+To run the project, follow these steps:
+1. Clone this repository.
+2. Open the project in your preferred IDE.
+3. Compile and run the mainTest to see it in action.
+4. Observe the output showing the shortest path found by the A* algorithm.
+
+------------------------------------------------------------------------------------
+
+🇪🇸
 # Proyecto prLaberinto
 
 ## Descripción
